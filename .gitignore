@@ -11,6 +11,9 @@ src/config.json
 .vscode/
 .idea/
 *.log
+OKXBot_Workspace/log/*
+!OKXBot_Workspace/log/.gitkeep
+
 test/
 doc/CONFIG_README.md
 doc/PROJECT_SUMMARY.md

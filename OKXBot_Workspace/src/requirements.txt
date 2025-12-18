@@ -1,0 +1,7 @@
+ccxt
+openai
+pandas
+schedule
+requests
+emoji
+matplotlib

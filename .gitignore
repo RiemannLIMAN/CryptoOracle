@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Project specific
+log/
+png/
+src/config.json
+.vscode/
+.idea/
+*.log
+test/
+doc/CONFIG_README.md
+doc/PROJECT_SUMMARY.md
+doc/SCRIPT_USAGE.md
+doc/STRATEGY_DETAILS.md
+OKXBot_Workspace/doc/CONFIG_README.md
+OKXBot_Workspace/doc/PROJECT_SUMMARY.md
+OKXBot_Workspace/doc/SCRIPT_USAGE.md
+OKXBot_Workspace/doc/STRATEGY_DETAILS.md
+OKXBot_Workspace/src/config.json

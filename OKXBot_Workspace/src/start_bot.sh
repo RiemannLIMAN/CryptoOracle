@@ -157,8 +157,8 @@ nohup $PYTHON_CMD -u okx_deepseek.py > "$STARTUP_LOG" 2>&1 &
 
 NEW_PID=$!
 
-# 更新 latest log 链接 (如果不想用链接，可以直接 cp)
-cp "$STARTUP_LOG" "$LATEST_LOG" 2>/dev/null
+# 更新 latest log 链接 (不再需要)
+# cp "$STARTUP_LOG" "$LATEST_LOG" 2>/dev/null
 
 # 7. 验证启动结果 (关键步骤)
 echo "⏳ 正在验证进程状态 (PID: $NEW_PID)，请等待 5 秒..."

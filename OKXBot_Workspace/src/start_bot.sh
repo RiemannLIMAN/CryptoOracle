@@ -126,11 +126,13 @@ if [ ! -d "$LOG_DIR" ]; then
     mkdir -p "$LOG_DIR"
 fi
 
-TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-STARTUP_LOG="$LOG_DIR/startup_$TIMESTAMP.log"
-LATEST_LOG="$LOG_DIR/startup.log" # 软链接或覆盖，方便查看最新
+# 我们不再使用 shell 重定向生成 startup_xxx.log
+# 而是直接依赖 python 脚本内部生成的 trading_bot_xxx.log
+# 但为了能看到 nohup 的输出 (print)，我们还是需要一个文件
+# 统一命名为 console_output.log，避免每次生成新文件
+STARTUP_LOG="$LOG_DIR/console_output.log"
 
-echo "📝 启动日志将输出至: $STARTUP_LOG"
+echo "📝 控制台输出将重定向至: $STARTUP_LOG"
 
 # 5. 检查是否已有实例运行
 EXISTING_PID=$(ps -ef | grep "okx_deepseek.py" | grep -v grep | awk '{print $2}')

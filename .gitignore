@@ -6,7 +6,6 @@ venv/
 .env
 
 # Project specific
-log/
 png/
 src/config.json
 .vscode/

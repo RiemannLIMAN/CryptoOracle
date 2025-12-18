@@ -13,6 +13,9 @@ src/config.json
 *.log
 OKXBot_Workspace/log/*
 !OKXBot_Workspace/log/.gitkeep
+OKXBot_Workspace/png/*
+!OKXBot_Workspace/png/.gitkeep
+
 
 test/
 doc/CONFIG_README.md

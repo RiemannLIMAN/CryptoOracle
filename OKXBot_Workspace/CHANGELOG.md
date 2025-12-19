@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v2.2] - 2025-12-19 (Security Hardening)
+
+### 🔒 Security & Configuration
+- **Environment Variable Support (.env)**:
+    - Migrated sensitive credentials (API Keys, Secrets, Passwords) from `config.json` to `.env` file.
+    - Added `python-dotenv` dependency to auto-load environment variables.
+    - Created `.env.example` template for safe sharing and deployment.
+- **Git Security**:
+    - Updated `.gitignore` to strictly exclude `.env` files, preventing accidental key leakage.
+    - Removed sensitive data from `config.json` and replaced with placeholders.
+- **Documentation**:
+    - Updated `README.md` and `CONFIG_README.md` with new secure configuration guides.
+    - Added `GIT_UPLOAD_GUIDE.md` for standardized deployment workflows.
+
 ## [v2.1] - 2025-12-18 (Trend-Falcon Upgrade)
 
 ### 🚀 New Core Features

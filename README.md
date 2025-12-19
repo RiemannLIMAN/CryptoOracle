@@ -165,17 +165,32 @@ pip install -r requirements.txt
 
 ### 3. 项目配置
 
-复制配置文件模板（请确保在 `src` 目录下执行）：
+**配置密钥 (安全推荐)**：
+在 `src` 目录下复制样本文件创建 `.env`，并填入您的密钥：
+
+```bash
+# 进入源代码目录
+cd OKXBot_Workspace/src
+
+# 复制样本文件
+cp .env.example .env
+
+# 编辑 .env 文件填入真实密钥
+# OKX_API_KEY=...
+# OKX_SECRET=...
+```
+
+**配置交易参数**：
+复制配置文件模板：
 
 ```bash
 cp config.example.json config.json
 ```
 
-编辑 `config.json` (详细参数说明请阅 `CONFIG_README.md`)：
-
-*   填入 `api_key`, `secret`, `password`。
-*   设置 `deepseek_api_key`。
+编辑 `config.json`：
+*   无需在 json 中填入密钥（系统会自动读取 `.env`）。
 *   调整 `symbols` 中的资金分配 `allocation` (建议先用小额测试)。
+*   详细参数说明请阅 `CONFIG_README.md`。
 
 ---
 

@@ -7,6 +7,20 @@
 
 ---
 
+## [v2.2] - 2025-12-19 (安全加固 Security Hardening)
+
+### 🔒 安全与配置升级
+- **环境变量支持 (.env)**:
+    - 将敏感凭证（API Key, Secret, Password）从 `config.json` 迁移至 `.env` 文件。
+    - 引入 `python-dotenv` 依赖，支持自动加载环境变量。
+    - 新增 `.env.example` 模板文件，便于安全分享与部署。
+- **Git 安全**:
+    - 更新 `.gitignore` 规则，严格忽略 `.env` 文件，防止密钥意外泄露。
+    - 清理了 `config.json` 中的敏感数据，替换为安全占位符。
+- **文档更新**:
+    - 更新 `README.md` 和 `CONFIG_README.md`，添加了新的安全配置指引。
+    - 新增 `GIT_UPLOAD_GUIDE.md`，规范化部署与上传流程。
+
 ## [v2.1] - 2025-12-18 (趋势猎鹰升级 Trend-Falcon Upgrade)
 
 ### 🚀 新增核心特性

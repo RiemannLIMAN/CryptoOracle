@@ -17,6 +17,11 @@ load_dotenv()
 import sys
 from logging.handlers import RotatingFileHandler
 
+# --- 系统版本配置 ---
+SYSTEM_VERSION = "v2.3"
+VERSION_FEATURE = "Fix Feishu/DingTalk notification failure; Add config auto-patch; Optimize version management."
+# ------------------
+
 """
 🤖 CryptoOracle: AI-Powered Quantitative Trading System
 =====================================================
@@ -1660,7 +1665,7 @@ def load_config():
 
 def print_banner():
     """打印启动横幅"""
-    banner = """
+    banner = f"""
     ██████╗ ██████╗ ██╗   ██╗██████╗ ████████╗ ██████╗ 
    ██╔════╝ ██╔══██╗╚██╗ ██╔╝██╔══██╗╚══██╔══╝██╔═══██╗
    ██║      ██████╔╝ ╚████╔╝ ██████╔╝   ██║   ██║   ██║
@@ -1668,7 +1673,7 @@ def print_banner():
    ╚██████╗ ██║  ██║   ██║   ██║        ██║   ╚██████╔╝
     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝ 
     
-    🤖 CryptoOracle AI Trading System | v2.2 (Security Hardening)
+    🤖 CryptoOracle AI Trading System | {SYSTEM_VERSION} ({VERSION_FEATURE})
     ===================================================
     """
     print(banner)
@@ -1682,7 +1687,10 @@ def main():
     if not config:
         return
 
-    # 初始化DeepSeek客户端
+    # [修复] 规范化 notification 配置：如果根目录下有 notification 且 trading 下没有，则合并到 trading 下
+    if 'notification' in config and 'notification' not in config['trading']:
+        config['trading']['notification'] = config['notification']
+
     deepseek_config = config['models']['deepseek']
     proxy = config['trading'].get('proxy', '')
     

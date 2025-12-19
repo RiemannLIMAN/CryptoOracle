@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v2.3] - 2025-12-20 (System Optimization)
+
+### 🔧 Core Fixes & Improvements
+- **Config Auto-Patch**:
+    - Fixed an issue where the `notification` configuration in the root directory of `config.json` was ignored.
+    - Added auto-detection logic: if the notification config exists in the root but is missing under `trading`, the system automatically merges it to ensure Feishu/DingTalk messages are sent correctly.
+- **Version Management Refactor**:
+    - Extracted system version (`SYSTEM_VERSION`) and feature description (`VERSION_FEATURE`) into global constants.
+    - Simplified version iteration and maintenance, eliminating the need to deep-dive into code to update the Banner display.
+
 ## [v2.2] - 2025-12-19 (Security Hardening)
 
 ### 🔒 Security & Configuration

@@ -7,6 +7,16 @@
 
 ---
 
+## [v2.3] - 2025-12-20 (系统架构优化 System Optimization)
+
+### 🔧 核心修复与改进
+- **通知配置自动补丁 (Config Auto-Patch)**:
+    - 修复了 `config.json` 中通知配置（`notification`）位于根目录时被忽略的问题。
+    - 新增自动检测逻辑：如果根目录存在通知配置而 `trading` 字段下缺失，系统会自动将其合并，确保飞书/钉钉消息能正常发送。
+- **版本管理重构 (Version Management Refactor)**:
+    - 将系统版本号 (`SYSTEM_VERSION`) 和特性描述 (`VERSION_FEATURE`) 提取为全局常量。
+    - 便于后续版本迭代和维护，无需深入代码修改 Banner 显示。
+
 ## [v2.2] - 2025-12-19 (安全加固 Security Hardening)
 
 ### 🔒 安全与配置升级

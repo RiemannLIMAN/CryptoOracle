@@ -17,5 +17,6 @@ OKXBot_Workspace/png/*
 
 
 test/
+doc/*.md
+OKXBot_Workspace/doc/*.md
 OKXBot_Workspace/src/config.json
-OKXBot_Workspace/doc/CONFIG_README.md

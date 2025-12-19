@@ -245,8 +245,8 @@ CryptoOracle 是一个开源项目，我们需要您的力量让它变得更强�
 
 ### 联系我们
 
-*   **GitHub Issues**: [https://github.com/RiemannLIMAN/CryptoOracle.git/issues]
-*   **Email**: [niudtao@163.com]
+*   **GitHub Issues**: [项目地址/Issues]
+*   **Email**: [1211018392@qq.com]
 
 如果您觉得本项目对您有帮助，欢迎使用作者的 OKX 邀请码注册，这将支持 **Riemann** 持续维护本项目。
 

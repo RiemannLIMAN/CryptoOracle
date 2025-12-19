@@ -5,3 +5,4 @@ schedule
 requests
 emoji
 matplotlib
+python-dotenv

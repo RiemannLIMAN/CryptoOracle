@@ -9,6 +9,10 @@ import json
 import emoji
 import logging
 import requests
+from dotenv import load_dotenv
+
+# 加载 .env 环境变量
+load_dotenv()
 
 import sys
 from logging.handlers import RotatingFileHandler
@@ -1634,7 +1638,22 @@ def load_config():
     """加载配置文件"""
     try:
         with open('config.json', 'r', encoding='utf-8') as f:
-            return json.load(f)
+            config = json.load(f)
+            
+        # [Security] 优先使用环境变量覆盖配置中的敏感信息
+        # OKX 凭证
+        if os.getenv('OKX_API_KEY'):
+            config['exchanges']['okx']['api_key'] = os.getenv('OKX_API_KEY')
+        if os.getenv('OKX_SECRET'):
+            config['exchanges']['okx']['secret'] = os.getenv('OKX_SECRET')
+        if os.getenv('OKX_PASSWORD'):
+            config['exchanges']['okx']['password'] = os.getenv('OKX_PASSWORD')
+            
+        # DeepSeek 凭证
+        if os.getenv('DEEPSEEK_API_KEY'):
+            config['models']['deepseek']['api_key'] = os.getenv('DEEPSEEK_API_KEY')
+            
+        return config
     except FileNotFoundError:
         print("未找到config.json，请先创建配置文件")
         return None

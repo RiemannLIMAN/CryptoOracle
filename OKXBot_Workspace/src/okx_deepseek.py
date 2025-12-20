@@ -1657,6 +1657,13 @@ def load_config():
         # DeepSeek 凭证
         if os.getenv('DEEPSEEK_API_KEY'):
             config['models']['deepseek']['api_key'] = os.getenv('DEEPSEEK_API_KEY')
+
+        # [新增] Webhook 凭证 (支持 .env 覆盖)
+        if os.getenv('NOTIFICATION_WEBHOOK'):
+            # 确保 notification 节点存在
+            if 'notification' not in config:
+                config['notification'] = {}
+            config['notification']['webhook_url'] = os.getenv('NOTIFICATION_WEBHOOK')
             
         return config
     except FileNotFoundError:

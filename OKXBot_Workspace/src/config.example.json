@@ -39,8 +39,7 @@
     }
   },
   "notification": {
-    "enabled": false,
-    "webhook_url": "YOUR_WEBHOOK_URL_HERE"
+    "enabled": false
   },
   "symbols": [
     {

@@ -1392,7 +1392,39 @@ ADX (14): {adx_str} (趋势强度)
                      trade_amount = min_amount
                  else:
                     self._log(f"🚫 跳过下单: 数量 {trade_amount} 小于最小限制 {min_amount}", 'warning')
-                    self.send_notification(f"⚠️ 无法下单\n数量 {trade_amount} 小于最小限制 {min_amount}")
+                    
+                    # 构造结构化诊断报告
+                    report = [
+                        "⚠️ 下单失败诊断报告",
+                        "------------------",
+                        f"交易对: {self.symbol}",
+                        f"失败原因: 交易数量({trade_amount}) < 交易所最小限制({min_amount})",
+                        "",
+                        "🔍 深度分析:",
+                        f"1. 账户能力: 最大可买 {max_trade_limit:.4f}",
+                    ]
+                    
+                    if max_trade_limit < min_amount:
+                        report.append(f"   - ❌ 余额不足以购买最小单位 (需: {min_amount})")
+                    else:
+                        report.append(f"   - ✅ 余额充足")
+                        
+                    report.append(f"2. AI 建议数量: {ai_suggest_amount}")
+                    report.append(f"3. 配置/计算限制: {config_amount}")
+                    
+                    if trade_amount == 0:
+                        report.append("   - ❌ 最终计算结果为0 (可能被配置限制或AI放弃)")
+                        
+                    if signal_data['signal'] != 'BUY':
+                         report.append(f"4. 信号方向: {signal_data['signal']} (非买入信号不自动放大)")
+                    
+                    report.append("")
+                    report.append("💡 建议排查:")
+                    report.append("- 账户 USDT 余额是否充足？")
+                    report.append("- 是否已达到最大持仓配额？")
+                    report.append(f"- 最小下单金额是否满足 (当前价格 {current_price})?")
+
+                    self.send_notification("\n".join(report))
                     return
 
             # 2. 精度截断
@@ -1421,6 +1453,7 @@ ADX (14): {adx_str} (趋势强度)
                          trade_amount = precise_req_amount
                     else:
                         self._log(f"🚫 跳过下单: 预估金额 {estimated_cost:.2f}U 小于最小金额限制 {min_cost}U", 'warning')
+                        self.send_notification(f"⚠️ 无法下单 (金额不足)\n预估金额 {estimated_cost:.2f}U < 最小限制 {min_cost}U\n建议: 增加单笔交易配额或充值")
                         return
                 
         except Exception as e:
